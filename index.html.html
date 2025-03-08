@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.6.4.1 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { line-height: 115%; margin-bottom: 0.1in; background: transparent }
+		pre { background: transparent }
+		pre.western { font-family: "Liberation Mono", monospace; font-size: 10pt }
+		pre.cjk { font-family: "NSimSun", monospace; font-size: 10pt }
+		pre.ctl { font-family: "Liberation Mono", monospace; font-size: 10pt }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre class="western">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;id&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;GBI SION Chatbot&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .chat-container {
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-box {
+            height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            background: white;
+        }
+        input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+        .message {
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 5px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        .user {
+            background: #007bff;
+            color: white;
+            align-self: flex-end;
+        }
+        .bot {
+            background: #ddd;
+            align-self: flex-start;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;chat-container&quot;&gt;
+        &lt;div class=&quot;chat-box&quot; id=&quot;chat-box&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;chat-input&quot;&gt;
+            &lt;input type=&quot;text&quot; id=&quot;user-input&quot; placeholder=&quot;Ketik pesan...&quot; onkeypress=&quot;handleKeyPress(event)&quot;&gt;
+            &lt;button onclick=&quot;sendMessage()&quot;&gt;Kirim&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;script&gt;
+        function sendMessage() {
+            let inputField = document.getElementById(&quot;user-input&quot;);
+            let message = inputField.value.trim();
+            if (message === &quot;&quot;) return;
+            
+            addMessage(&quot;user&quot;, message);
+            inputField.value = &quot;&quot;;
+            
+            setTimeout(() =&gt; {
+                let response = getBotResponse(message.toLowerCase());
+                addMessage(&quot;bot&quot;, response);
+            }, 500);
+        }
+        
+        function getBotResponse(message) {
+            if (message.includes(&quot;halo&quot;) || message.includes(&quot;shalom&quot;)) {
+                return &quot;Shalom jemaat Tuhan yang terkasih, apakah ada yang bisa kami bantu?&quot;;
+            } else if (message.includes(&quot;kapan&quot;)) {
+                return &quot;Ibadah Minggu Raya GBI SION pukul 10:30 pagi, Sekolah Minggu pukul 07:00 pagi, Ibadah Pemuda Youth pukul 19:00, Ibadah Keluarga akan diumumkan di saat pengumuman ibadah raya.&quot;;
+            } else if (message.includes(&quot;daftar&quot;) || message.includes(&quot;jemaat&quot;)) {
+                return &quot;Silahkan kunjungi website kami dan klik pendaftaran.&quot;;
+            } else if (message.includes(&quot;dimana&quot;)) {
+                return &quot;GBI SION berada di Jalan Danau Toba, Sp4, Gunung Mulya.&quot;;
+            } else if (message.includes(&quot;terimakasih&quot;)) {
+                return &quot;Sama-sama, sampai jumpa di gereja, Jesus bless you...&quot;;
+            } else {
+                return &quot;Maaf, kami hanya melayani seputar kegerejaan GBI SION.&quot;;
+            }
+        }
+        
+        function addMessage(sender, text) {
+            let chatBox = document.getElementById(&quot;chat-box&quot;);
+            let msgDiv = document.createElement(&quot;div&quot;);
+            msgDiv.classList.add(&quot;message&quot;, sender);
+            msgDiv.textContent = text;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+        
+        function handleKeyPress(event) {
+            if (event.key === &quot;Enter&quot;) {
+                sendMessage();
+            }
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</body>
+</html>
